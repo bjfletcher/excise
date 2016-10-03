@@ -1,6 +1,6 @@
-import {innerHTML} from 'diffhtml/lib';
+const innerHTML = require('diffhtml').innerHTML;
 
-export class Component extends HTMLElement {
+class Component extends HTMLElement {
   constructor() {
     super();
     this.props = {};
@@ -44,7 +44,7 @@ export class Component extends HTMLElement {
 	}
 }
 
-export const componentFactory = (BaseComponent) => ((render, observedAttributes = []) => class FunctionalComponent extends BaseComponent {
+const componentFactory = (BaseComponent) => ((render, observedAttributes = []) => class FunctionalComponent extends BaseComponent {
 	render() {
 		return render(this.props, this);
 	}
@@ -54,4 +54,6 @@ export const componentFactory = (BaseComponent) => ((render, observedAttributes 
 	}
 });
 
-export const component = componentFactory(Component);
+const component = componentFactory(Component);
+
+module.exports = { Component, componentFactory, component };
