@@ -13,3 +13,6 @@ customElements.define('x-button', component(
 	({click}) => html`<button onclick=${click}><b><slot /></b></button>`,
 	['click']
 ));
+
+// server-side rendering
+console.log(render('x-increment'));
